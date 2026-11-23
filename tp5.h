@@ -14,4 +14,5 @@ typedef struct Consommation {
 void affichermenu();
 int choixUtilisateur();
 void afficheresume(Consommation p);
+Consommation ajouterConsommation(Consommation p);
 #endif
