@@ -20,44 +20,6 @@ int choixUtilisateur()
     return choix;
 }
 
-void afficheresume(Consommation p)
-{
-    char bonbon;
-    char legume;
-    char fruit;
-    if (hummeurBonbons(p.bonbons) == 0)
-        bonbon = '😇';
-    else if (hummeurBonbons(p.bonbons)== 1)
-        bonbon = '🙂';
-    else if (hummeurBonbons(p.bonbons)== 2)
-        bonbon = '😕';
-    else 
-        bonbon = '👿';
-    
-    if (hummeurLegumes(p.bonbons) == 0)
-        bonbon = '😭';
-    else if (hummeurLegumes(p.bonbons)== 1)
-        bonbon = '🙂';
-    else 
-        bonbon = '😎';
-
-    if (hummeurFruits(p.bonbons) == 0)
-        bonbon = '😢';
-    else if (hummeurFruits(p.bonbons)== 1)
-        bonbon = '🙂';
-    else 
-        bonbon = '😄';
-    printf("==========Resume du jour==========\n");
-    printf("Eau       :   %d  💧\n", p.eau);
-    printf("Cafe      :   %d  ☕\n", p.cafe);
-    printf("Bonbons   :   %d  🍬 %c\n", p.bonbons, bonbon);
-    printf("Gateau    :   %d  🍰\n", p.gateau);
-    printf("Legumes   :   %d  🍆 %c\n", p.legumes, legume);
-    printf("Fruits    :   %d  🍎 %c\n", p.fruits, fruit);
-    printf("Proteines :   %d  🍖\n", p.proteines);
-    printf("==================================\n");
-}
-
 int hummeurBonbons(int p)
 {
     int code;
@@ -93,7 +55,43 @@ int hummeurFruits(int p)
     else 
         return 2;
     return code;
-Consommation intialiser(Consommation p){
+}
+
+void afficheresume(Consommation p)
+{
+    printf("==========Resume du jour==========\n");
+    printf("Eau       :   %d  💧\n", p.eau);
+    printf("Cafe      :   %d  ☕\n", p.cafe);
+    if (hummeurBonbons(p.bonbons) == 0)
+        printf("Bonbons   :   %d  🍬 😇\n", p.bonbons);
+    else if (hummeurBonbons(p.bonbons)== 1)
+        printf("Bonbons   :   %d  🍬 🙂\n", p.bonbons);
+    else if (hummeurBonbons(p.bonbons)== 2)
+        printf("Bonbons   :   %d  🍬 😕\n", p.bonbons);
+    else    
+        printf("Bonbons   :   %d  🍬 👿\n", p.bonbons);
+    printf("Gateau    :   %d  🍰\n", p.gateau); 
+    if (hummeurLegumes(p.bonbons) == 0)
+        printf("Legumes   :   %d  🍆 😭\n", p.legumes);
+    else if (hummeurLegumes(p.bonbons)== 1)
+        printf("Legumes   :   %d  🍆 🙂\n", p.legumes);
+    else 
+        printf("Legumes   :   %d  🍆 😎\n", p.legumes);
+    
+    if (hummeurFruits(p.bonbons) == 0)
+        printf("Fruits    :   %d  🍎 😢\n", p.fruits);
+    else if (hummeurFruits(p.bonbons)== 1)
+        printf("Fruits    :   %d  🍎 🙂\n", p.fruits);
+    else 
+        printf("Fruits    :   %d  🍎 😄\n", p.fruits);
+    
+    printf("Proteines :   %d  🍖\n", p.proteines);
+    printf("==================================\n");
+}
+
+
+Consommation intialiser(){
+    Consommation p;
     p.eau = 0;
     p.cafe =0;
     p.bonbons = 0;
@@ -117,7 +115,7 @@ Consommation ajouterConsommation(Consommation p){
     printf("6)Fruits \n");
     printf("7)Proteines \n");
     
-    while((choix > 7) && (choix <= 0)){
+    while((choix > 7) || (choix < 1)){
         printf("Votre choix : ");
         scanf("%d", &choix);
         if(choix <= 0){
@@ -141,18 +139,25 @@ Consommation ajouterConsommation(Consommation p){
     switch(choix){
         case 1 :
         p.eau += quantite;
+        break;
         case 2 :
         p.cafe += quantite;
+        break;
         case 3 : 
         p.bonbons += quantite;
+        break;
         case 4 :
         p.gateau += quantite;
+        break;
         case 5 : 
         p.legumes += quantite;
+        break;
         case 6 : 
         p.fruits += quantite;
+        break;
         case 7 :
         p.proteines += quantite;
+        break;
     }
 
     printf("consommation mise à jour \n");

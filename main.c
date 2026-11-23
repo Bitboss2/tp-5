@@ -8,6 +8,8 @@ int main()
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
     setlocale(LC_ALL, ".UTF-8");
+    Consommation consommer;
+    consommer = intialiser();
     int choix = 0;
     do {
         affichermenu();
@@ -15,10 +17,10 @@ int main()
         switch (choix)
         {
         case 1:
-
+            consommer = ajouterConsommation(consommer);
             break;
         case 2:
-
+            afficheresume(consommer);
             break;
         case 3:
             printf("Au revoir");
