@@ -1,9 +1,6 @@
 #ifndef CONSOMMATION
 #define CONSOMMAION
 
-void affichermenu();
-int choixUtilisateur();
-
 typedef struct Consommation {
     int eau;
     int cafe;
@@ -14,4 +11,7 @@ typedef struct Consommation {
     int proteines;
 }Consommation;
 
+void affichermenu();
+int choixUtilisateur();
+void afficheresume(Consommation p);
 #endif
