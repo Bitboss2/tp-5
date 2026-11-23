@@ -10,3 +10,11 @@ void affichermenu()
     printf("2. Afficher le resume du jour\n");
     printf("3. Sauvergarder et quitter\n");
 }
+
+int choixUtilisateur()
+{
+    int choix;
+    printf("Votre choix : ");
+    scanf("%d", &choix);
+    return choix;
+}
