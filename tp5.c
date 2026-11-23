@@ -9,7 +9,8 @@ void affichermenu()
     printf("=========================\n");
     printf("1. Ajouter une consommation\n");
     printf("2. Afficher le resume du jour\n");
-    printf("3. Sauvegarder et quitter\n");
+    printf("3. Afficher les objectifs et le score\n");
+    printf("4. Sauvegarder et quitter\n");
 }
 
 int choixUtilisateur()
@@ -71,16 +72,16 @@ void afficheresume(Consommation p)
     else    
         printf("Bonbons   :   %d  🍬 👿\n", p.bonbons);
     printf("Gateau    :   %d  🍰\n", p.gateau); 
-    if (hummeurLegumes(p.bonbons) == 0)
+    if (hummeurLegumes(p.legumes) == 0)
         printf("Legumes   :   %d  🍆 😭\n", p.legumes);
-    else if (hummeurLegumes(p.bonbons)== 1)
+    else if (hummeurLegumes(p.legumes)== 1)
         printf("Legumes   :   %d  🍆 🙂\n", p.legumes);
     else 
         printf("Legumes   :   %d  🍆 😎\n", p.legumes);
     
-    if (hummeurFruits(p.bonbons) == 0)
+    if (hummeurFruits(p.fruits) == 0)
         printf("Fruits    :   %d  🍎 😢\n", p.fruits);
-    else if (hummeurFruits(p.bonbons)== 1)
+    else if (hummeurFruits(p.fruits)== 1)
         printf("Fruits    :   %d  🍎 🙂\n", p.fruits);
     else 
         printf("Fruits    :   %d  🍎 😄\n", p.fruits);
@@ -163,4 +164,64 @@ Consommation ajouterConsommation(Consommation p){
     printf("consommation mise à jour \n");
     return p;
 
+}
+
+int calculerScoreSante(Consommation p, Objectif v)
+{
+    int score = 50;
+    if (p.eau > v.eau)
+        score += 10;
+    if (p.legumes > v.legume)
+        score += 10;
+    if (p.fruits > v.fruit)
+        score += 10;
+    if (p.proteines > v.proteine)
+        score += 10;
+    if (p.bonbons > 5)
+    {
+        if (p.bonbons - 5 > 15) {
+            score -= 15;
+        } else {
+            score = score - p.bonbons - 5;
+        }
+    }
+    if (p.cafe > 3)
+    {
+        int temp = p.cafe - 3;
+        if (temp > 10) {
+            score -= 20;
+        } else {
+            score += temp*2;
+        }
+    }
+    if (score > 100) score = 100;
+    if (score < 0) score = 0;
+    return score;
+}
+
+void afficherObjectifScore(Consommation p, Objectif v)
+{
+    if (p.eau < v.eau)
+        printf("Eau       :   %d  ❌\n", v.eau);
+    else
+        printf("Eau       :   %d  ✅\n", v.eau);
+    printf("Cafe      :   _ (pas d'objectif)\n");
+    printf("Bonbons   :   _ (pas d'objectif)\n");
+    printf("Gateau    :   _ (pas d'objectif)\n");
+    if (p.legumes < v.legume)
+        printf("Legumes   :   %d  ❌\n", v.legume);
+    else
+        printf("Legumes   :   %d  ✅\n", v.legume);
+    
+    if (p.fruits < v.fruit)
+        printf("Fruit     :   %d  ❌\n", v.fruit);
+    else
+        printf("Fruit     :   %d  ✅\n", v.fruit);
+
+    if (p.fruits < v.fruit)
+        printf("Proteines :   %d  ❌\n", v.proteine);
+    else
+        printf("Proteines :   %d  ✅\n", v.proteine);
+    int g = calculerScoreSante(p, v);
+    printf("Score sante du jour : %d / 100", g);
 }
