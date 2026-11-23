@@ -11,6 +11,7 @@ int main()
     Consommation consommer;
     consommer = intialiser();
     int choix = 0;
+    Objectif gigachad = {8, 5, 3, 2};
     do {
         affichermenu();
         choix = choixUtilisateur();
@@ -22,7 +23,10 @@ int main()
         case 2:
             afficheresume(consommer);
             break;
-        case 3:
+        case 3 :
+            afficherObjectifScore(consommer, gigachad);
+            break;
+        case 4:
             printf("Au revoir");
             break;
         default:
