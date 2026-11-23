@@ -60,32 +60,48 @@ int hummeurFruits(int p)
 void afficheresume(Consommation p)
 {
     printf("==========Resume du jour==========\n");
-    printf("Eau       :   %d  💧\n", p.eau);
-    printf("Cafe      :   %d  ☕\n", p.cafe);
-    if (hummeurBonbons(p.bonbons) == 0)
-        printf("Bonbons   :   %d  🍬 😇\n", p.bonbons);
-    else if (hummeurBonbons(p.bonbons)== 1)
-        printf("Bonbons   :   %d  🍬 🙂\n", p.bonbons);
-    else if (hummeurBonbons(p.bonbons)== 2)
-        printf("Bonbons   :   %d  🍬 😕\n", p.bonbons);
-    else    
-        printf("Bonbons   :   %d  🍬 👿\n", p.bonbons);
-    printf("Gateau    :   %d  🍰\n", p.gateau); 
-    if (hummeurLegumes(p.bonbons) == 0)
-        printf("Legumes   :   %d  🍆 😭\n", p.legumes);
-    else if (hummeurLegumes(p.bonbons)== 1)
-        printf("Legumes   :   %d  🍆 🙂\n", p.legumes);
-    else 
-        printf("Legumes   :   %d  🍆 😎\n", p.legumes);
+    printf("Eau       :   %d  💧", p.eau);
+    afficher_barre(10, p.eau);
+    printf("Cafe      :   %d  ☕", p.cafe);
+    afficher_barre(10, p.cafe);
+    if (hummeurBonbons(p.bonbons) == 0){
+        printf("Bonbons   :   %d  🍬 😇", p.bonbons);
+        afficher_barre(10, p.bonbons);}
+    else if (hummeurBonbons(p.bonbons)== 1){
+        printf("Bonbons   :   %d  🍬 🙂", p.bonbons);
+        afficher_barre(10, p.bonbons);}
+    else if (hummeurBonbons(p.bonbons)== 2){
+        printf("Bonbons   :   %d  🍬 😕", p.bonbons);
+        afficher_barre(10, p.bonbons);}
+    else{    
+        printf("Bonbons   :   %d  🍬 👿", p.bonbons);
+        afficher_barre(10, p.bonbons);
+    }
+    printf("Gateau    :   %d  🍰", p.gateau);
+    afficher_barre(10, p.gateau); 
+    if (hummeurLegumes(p.legumes) == 0){
+        printf("Legumes   :   %d  🍆 😭", p.legumes);
+        afficher_barre(10, p.legumes);
+    }
+    else if (hummeurLegumes(p.legumes)== 1){
+        printf("Legumes   :   %d  🍆 🙂", p.legumes);
+        afficher_barre(10, p.legumes);}
+    else{
+        printf("Legumes   :   %d  🍆 😎", p.legumes);
+        afficher_barre(10, p.legumes);}
     
-    if (hummeurFruits(p.bonbons) == 0)
-        printf("Fruits    :   %d  🍎 😢\n", p.fruits);
-    else if (hummeurFruits(p.bonbons)== 1)
-        printf("Fruits    :   %d  🍎 🙂\n", p.fruits);
-    else 
-        printf("Fruits    :   %d  🍎 😄\n", p.fruits);
+    if (hummeurFruits(p.fruits) == 0){
+        printf("Fruits    :   %d  🍎 😢", p.fruits);
+        afficher_barre(10, p.fruits);}
+    else if (hummeurFruits(p.fruits)== 1){
+        printf("Fruits    :   %d  🍎 🙂", p.fruits);
+        afficher_barre(10, p.fruits);}
+    else {
+        printf("Fruits    :   %d  🍎 😄", p.fruits);
+        afficher_barre(10, p.fruits);}
     
-    printf("Proteines :   %d  🍖\n", p.proteines);
+    printf("Proteines :   %d  🍖", p.proteines);
+    afficher_barre(10, p.proteines);
     printf("==================================\n");
 }
 
@@ -163,4 +179,31 @@ Consommation ajouterConsommation(Consommation p){
     printf("consommation mise à jour \n");
     return p;
 
+}
+
+
+void afficher_barre (int b, int a){
+    int max = b;
+    int val = a;
+
+    if(max <= 0){
+        max += 1;
+    }
+
+    if(val > max){
+        val = max;
+    }
+
+    int casespleines = (val * 10)/max;
+
+    printf("  ");
+
+    for(int i =0; i<max ; i++){
+        if(i < casespleines ){
+            printf("█");
+        }
+        else if(i>= casespleines)
+        {printf("░");}
+    }
+    printf("\n");
 }

@@ -16,4 +16,5 @@ int choixUtilisateur();
 void afficheresume(Consommation p);
 Consommation intialiser();
 Consommation ajouterConsommation(Consommation p);
+void afficher_barre (int b, int a);
 #endif
