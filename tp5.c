@@ -117,7 +117,7 @@ Consommation ajouterConsommation(Consommation p){
     printf("6)Fruits \n");
     printf("7)Proteines \n");
     
-    while((choix < 7) && (choix > 0)){
+    while((choix > 7) && (choix <= 0)){
         printf("Votre choix : ");
         scanf("%d", &choix);
         if(choix <= 0){
@@ -140,19 +140,19 @@ Consommation ajouterConsommation(Consommation p){
 
     switch(choix){
         case 1 :
-        p.eau = quantite;
+        p.eau += quantite;
         case 2 :
-        p.cafe = quantite;
+        p.cafe += quantite;
         case 3 : 
-        p.bonbons = quantite;
+        p.bonbons += quantite;
         case 4 :
-        p.gateau = quantite;
+        p.gateau += quantite;
         case 5 : 
-        p.legumes = quantite;
+        p.legumes += quantite;
         case 6 : 
-        p.fruits = quantite;
+        p.fruits += quantite;
         case 7 :
-        p.proteines = quantite;
+        p.proteines += quantite;
     }
 
     printf("consommation mise à jour \n");
